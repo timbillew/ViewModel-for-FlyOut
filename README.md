@@ -83,7 +83,9 @@ public partial class SignIn : ContentPage
 ------ShowHideMenu.cs
 
   class ShowHideMenu
+  
   {
+  
       public class ShowParametersViewModel : INotifyPropertyChanged
       {
 
