@@ -51,8 +51,25 @@ public partial class SignIn : ContentPage
 
 	public void LogInBtn(object sender, EventArgs args)
 	{
-          MainPage.AdminLevel = 1;
+
+           //  this int will be set later.  just hard coded for now.
+           MainPage.AdminLevel = 1;
+          InvokeCommandFromCodeBehind();
+   
   }
+
+    private void InvokeCommandFromCodeBehind()
+    {
+        if (BindingContext is ShowParametersViewModel viewModel)
+        {
+            if (viewModel.ShowParametersCommand.CanExecute(null))
+            {
+                viewModel.ShowParametersCommand.Execute(null);
+            }
+        }
+    }
+
+  
 
 }
 
