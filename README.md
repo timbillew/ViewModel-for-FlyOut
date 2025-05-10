@@ -21,7 +21,7 @@ With this code,  I do not have successful refresh of Menu.
   public partial class MainPage  :  ContentPage
   {
   
-      public static int AdminLevel { get; internal set; } = 0;
+      public static bool AdminLevel { get; internal set; } = false;
 
       public MainPage()
         {
@@ -52,8 +52,11 @@ public partial class SignIn : ContentPage
 	public void LogInBtn(object sender, EventArgs args)
 	{
 
-           //  this int will be set later.  just hard coded for now.
-           MainPage.AdminLevel = 1;
+           //  this bool will be set later.  just hard coded for now.
+	   
+           MainPage.AdminLevel = true;
+
+    
           InvokeCommandFromCodeBehind();
    
   }
@@ -82,10 +85,11 @@ public partial class SignIn : ContentPage
 
         <Shell>
 
+         //   this will click event is connected to the function which reads XML file.
+
         <Button 
                x:Name="PasswSubmitBtn"
                Text="SUBMIT"
-               Command="{Binding ShowParametersCommand}"
                Clicked="LogInBtn"
                BackgroundColor="Green"
                HorizontalOptions="Fill" VerticalOptions="Start"
@@ -128,16 +132,8 @@ public partial class SignIn : ContentPage
           public ShowParametersViewModel()
           {
 
-              if (MainPage.AdminLevel == 1)
-              {
-                ShowParametersCommand = new Command(() => Parameters = true);
-              }
-              else {
-                ShowParametersCommand = new Command(() => Parameters = false);
-              }
-
-
-              
+               ShowParametersCommand = new Command(() => Parameters = true);
+             
           }
 
  
